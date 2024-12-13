@@ -5,6 +5,11 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
+// เส้นทางสำหรับ root ("/")
+app.get('/', (req, res) => {
+    res.send('Server is running and ready to accept requests!');
+});
+
 // ตัวอย่างกราฟ (โหนดและน้ำหนัก)
 const graph = {
     A: { B: 0.146, C: 0.362, D: 0.864, E: 0.320, F: 0.892},
@@ -101,5 +106,5 @@ app.post('/find-path', (req, res) => {
 // เริ่มต้นเซิร์ฟเวอร์
 const port = process.env.PORT || 10000;
 app.listen(port, () => {
-    console.log('Server is running on port ${port} ');
+    console.log(`Server is running on port ${port}`);
 });
